@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
 
@@ -6,9 +8,10 @@ int main() {
     char estado1 , estado2;
     char codigo1[20], codigo2[20] , cidade1[20] , cidade2[20];
     unsigned long int populacao1 , populacao2;
-    int turistico1 , turistico2;
+    int turistico1 , turistico2 , opcao;
     float area1 , area2 , pib1 , pib2;
     float densidade1 , densidade2 , pibpercapita1 , pibpercapita2;
+    
     
     // Cadastro da Carta 1:
     printf("Dados da Carta 1 \n");
@@ -73,6 +76,18 @@ int main() {
     printf("Densidade populacional: %f hab/km \n", densidade2 );
     printf("PIB per capita: %f reais \n\n", pibpercapita2);
 
+
+    printf("Escolha uma opção para comparação \n");
+    printf("Opção 1 - População \n");
+    printf("Opção 2 - Área \n");
+    printf("Opção 3 - Pib \n");
+    scanf("%d", &opcao);
+
+    switch (opcao) { 
+    
+
+
+    case 1:
     printf("Comparação das Cartas - População \n");
         printf("Carta 1 , População: %lu \n", populacao1);
         printf("Carta 2 , População: %lu \n\n", populacao2);
@@ -80,10 +95,46 @@ int main() {
         if (populacao1 > populacao2){
             printf("A Carta 1 venceu!");
         }
-        else{
+        else if (populacao1 < populacao2){
             printf("A Carta 2 venceu!");
         }
+        else{
+            printf(" Houve um empate!");
+        } break;
         
+    case 2:
+     printf("Comparação das Cartas - Area \n");
+        printf("Carta 1 , Area: %.3f \n", area1);
+        printf("Carta 2 , Area: %.3f \n\n", area2);
+
+        if (area1 > area2){
+            printf("A Carta 1 venceu!");
+        }
+        else if (area1 < area2){
+            printf("A Carta 2 venceu!");
+        }
+        else{
+            printf(" Houve um empate!");
+        } break;
+
+    case 3:
+     printf("Comparação das Cartas - Pib \n");
+        printf("Carta 1 , Pib: %.2f \n", pib1);
+        printf("Carta 2 , Pib: %.2f \n\n", pib2);
+
+        if (pib1 > pib2){
+            printf("A Carta 1 venceu!");
+        }
+        else if (pib1 < pib2){
+            printf("A Carta 2 venceu!");
+        }
+        else{
+            printf(" Houve um empate!");
+        } break;
+        default:
+        printf("Opção inválida!");
+        break;}
+
     
     return 0;
 }
