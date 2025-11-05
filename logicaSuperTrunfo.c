@@ -5,10 +5,10 @@
 int main() {
 
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    char estado1 , estado2;
+    char estado1 , estado2, primeiroAtributo , segundoAtributo;
     char codigo1[20], codigo2[20] , cidade1[20] , cidade2[20];
     unsigned long int populacao1 , populacao2;
-    int turistico1 , turistico2 , opcao;
+    int turistico1 , turistico2 , opcao , resultado1, resultado2;
     float area1 , area2 , pib1 , pib2;
     float densidade1 , densidade2 , pibpercapita1 , pibpercapita2;
     
@@ -76,8 +76,95 @@ int main() {
     printf("Densidade populacional: %f hab/km \n", densidade2 );
     printf("PIB per capita: %f reais \n\n", pibpercapita2);
 
+    // Iniciando jogo de comparação nível avançado
 
-    printf("Escolha uma opção para comparação \n");
+    printf("Iniciando o jogo de comparação dos Atributos:\n");
+    printf("P - População \n");
+    printf("A- Área \n");
+    printf("T - Pontos Turisticos \n");
+    printf("Escolha o Primeiro Atributo para comparação: \n");
+    scanf(" %c", &primeiroAtributo);
+
+    switch (primeiroAtributo){
+        
+        case 'P':
+        case 'p': 
+            printf("Você escolheu como primeiro atributo : Pupulação \n");
+            printf("Carta 1 - %lu / Carta 2 - %lu\n\n" , populacao1 , populacao2);
+            resultado1 = (populacao1 > populacao2) ? 1 : ((populacao1 < populacao2) ? -1 : 0);        
+            break;
+
+        case 'A':
+        case 'a': 
+            printf("Você escolheu como primeiro atributo : Area \n");
+            printf("Carta 1 - %.3f / Carta 2 - %.3f \n\n" , area1 , area2);
+            resultado1 = (area1 > area2) ? 1 : ((area1 < area2) ? -1 : 0);
+        break;
+
+        case 'T':
+        case 't': 
+            printf("Você escolheu como primeiro atributo : Pontos Turisticos \n");
+            printf("Carta 1 - %d / Carta 2 - %d \n\n" , turistico1 , turistico2);
+            resultado1 = (turistico1 > turistico2) ? 1 : ((turistico1 < turistico2) ? -1 : 0);
+        break;
+    
+        default:
+        printf("Opção Inválida \n");
+        break;
+    }
+
+    printf("Escolha o Segundo Atributo para comparação: \n");
+    printf("P - População \n");
+    printf("A- Área \n");
+    printf("T - Pontos Turisticos \n");
+    scanf(" %c", &segundoAtributo);
+
+    if (primeiroAtributo == segundoAtributo){
+        printf("Você selecionou o mesmo atributo"); }
+    else {
+
+        switch (segundoAtributo){
+        
+        case 'P':
+        case 'p': 
+            printf("Você escolheu como segundo atributo : Pupulação \n");
+            printf("Carta 1 - %lu / Carta 2 - %lu \n\n" , populacao1 , populacao2);
+            resultado2 = (populacao1 > populacao2) ? 1 : ((populacao1 < populacao2) ? -1 : 0);
+        break;
+
+        case 'A':
+        case 'a': 
+            printf("Você escolheu como segundo atributo : Area \n");
+            printf("Carta 1 - %.3f / Carta 2 - %.3f \n\n" , area1 , area2);
+            resultado2 = (area1 > area2) ? 1 : ((area1 < area2) ? -1 : 0);
+        break;
+
+        case 'T':
+        case 't': 
+            printf("Você escolheu como segundo atributo : Pontos Turisticos \n");
+            printf("Carta 1 - %d / Carta 2 - %d \n\n" , turistico1 , turistico2);
+            resultado2 = (turistico1 > turistico2) ? 1 : ((turistico1 < turistico2) ? -1 : 0);
+        break;
+    
+        default:
+        printf("Opção Inválida \n");
+        break;
+        }               
+        }
+    
+        printf("Atributos selecionados para competição. Atributo 1: %c , Atributo 2: %c \n\n", primeiroAtributo , segundoAtributo);
+
+        int pontuacaoFinal = resultado1 + resultado2;
+
+        if (pontuacaoFinal > 0) {
+          printf("A Carta 1 Venceu a Carta 2");
+      } else if (pontuacaoFinal < 0) {
+          printf("A Carta 2 Venceu a Carta 1");
+      } else {
+          printf("A Carta 1 Empatou com a Carta 2");
+      }
+
+    /* printf("Escolha uma opção para comparação \n");
     printf("Opção 1 - População \n");
     printf("Opção 2 - Área \n");
     printf("Opção 3 - Pib \n");
@@ -85,8 +172,6 @@ int main() {
 
     switch (opcao) { 
     
-
-
     case 1:
     printf("Comparação das Cartas - População \n");
         printf("Carta 1 , População: %lu \n", populacao1);
@@ -133,7 +218,7 @@ int main() {
         } break;
         default:
         printf("Opção inválida!");
-        break;}
+        break;} */
 
     
     return 0;
